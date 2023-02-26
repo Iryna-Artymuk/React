@@ -1,0 +1,35 @@
+[
+  {
+    "id": "id-1",
+    "url": "https://cdn.pixabay.com/photo/2017/07/26/06/34/art-2540641__340.png",
+    "title": "Flowers",
+    "price": 500,
+    "autor": {
+      "tag": "jinjinjinjin",
+      "url": "https://pixabay.com/users/jinjinjinjin-519688/?tab=about"
+    },
+    "quantity": 10
+  },
+  {
+    "id": "id-2",
+    "url": "https://cdn.pixabay.com/photo/2014/03/24/17/06/bird-295026_960_720.png",
+    "title": "Bird",
+    "price": 100,
+    "autor": {
+      "tag": "Clker-Free-Vector-Images",
+      "url": "https://pixabay.com/users/clker-free-vector-images-3736/"
+    },
+    "quantity": 20
+  },
+  {
+    "id": "id-3",
+    "url": "https://cdn.pixabay.com/photo/2016/08/26/01/41/flowers-1621066_960_720.jpg",
+    "title": "Flowers",
+    "price": 200,
+    "autor": {
+      "tag": "intographics",
+      "url": "https://pixabay.com/users/intographics-2633886/"
+    },
+    "quantity": 5
+  }
+]
