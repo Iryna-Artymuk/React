@@ -10,6 +10,9 @@
   font-size: 1rem;
   color: purple;
   background-color: yellow;
+  border: 1px solid rgba(199, 8, 173, 0.2);
+  box-shadow: 0.3em 0.3em 0.3em 0.3em rgba(0.4, 0.4, 0.4, 0.4);
+  border-radius: 10px;
 }
 
 .todoList ul {
@@ -20,6 +23,8 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
+  box-shadow: 0.3em 0.3em 0.3em 0.3em rgba(0.4, 0.4, 0.4, 0.4);
+  border-radius: 10px;
 }
 .item {
   position: relative;

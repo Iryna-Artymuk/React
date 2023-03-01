@@ -44,18 +44,29 @@ class App extends Component {
   // якщо input checked замінити стилі
   // або якщо не співпадає повернути старий  57 рядок
 
+  // ToggleComplete = todoID => {
+  //   this.setState(prevState => ({
+  //     todo: prevState.todo.map(todoItem => {
+  //       if (todoItem.id === todoID)
+  //         return {
+  //           ...todoItem,
+  //           completed: !todoItem.completed,
+  //         };
+  //       return todoItem;
+  //     }),
+  //   }));
+  // };
+
   ToggleComplete = todoID => {
-    this.setState(prevState => ({
-      todo: prevState.todo.map(todoItem => {
-        if (todoItem.id === todoID)
-          return {
-            ...todoItem,
-            completed: !todoItem.completed,
-          };
-        return todoItem;
-      }),
+    this.setState(({ todo }) => ({
+      todo: todo.map(todoItem =>
+        todoItem.id === todoID
+          ? { ...todoItem, completed: !todoItem.completed }
+          : todoItem
+      ),
     }));
   };
+
   addImgUrl = url =>
     this.setState({
       selectedImg: url,
