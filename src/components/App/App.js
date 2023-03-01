@@ -13,6 +13,7 @@ import Dropdown from "../Dropdown/Dropdown";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import TodoList from "../TodoList";
 import Modal from "./Modal";
+import Form from "../Form";
 class App extends Component {
   state = {
     todo: [
@@ -22,6 +23,7 @@ class App extends Component {
     ],
     modalActive: false,
     selectedImg: null,
+    inputValue: "iryna",
   };
   deleteToDo = (toDoId) => {
     console.log("delete");
@@ -39,10 +41,35 @@ class App extends Component {
     this.setState({
       selectedImg: url,
     });
+  formSubmitHandler = (data) => {
+    console.log(data);
+  };
+  // hendelInputChange = (event) => {
+  //   console.log(event.currentTarget.value);
+  //   this.setState({ inputValue: event.currentTarget.value });
+  // };
+
+  // hendelNameChange = (event) => {
+  //   console.log(event.currentTarget.value);
+  //   this.setState({ name: event.currentTarget.value });
+  // };
 
   render() {
     return (
       <Layout>
+        {/* <input
+          style={{
+            border: "2px solid purple",
+            height: 50,
+            background: "wheat",
+            fontSize: 32,
+            padding: 10,
+          }}
+          type="text"
+          value={this.state.inputValue}
+          onChange={this.hendelChange}
+        ></input> */}
+        <Form FormSubmit={this.formSubmitHandler} />
         {this.state.modalActive && (
           <Modal
             toggleModal={this.toggleModal}

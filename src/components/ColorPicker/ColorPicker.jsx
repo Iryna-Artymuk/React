@@ -1,21 +1,25 @@
-import React, { Component } from "react";
-import "./ColorPicker.css";
+import React, { Component } from 'react';
+import './ColorPicker.css';
 
+import classNames from 'classnames';
 class ColorPicker extends Component {
   state = {
     activeButtonIndx: 0,
   };
-  setActiveIndexToState = (index) => {
+  setActiveIndexToState = index => {
     return this.setState({
       activeButtonIndx: index,
     });
   };
-  makeClassList = (index) => {
-    const classes = ["button"];
-    if (index === this.state.activeButtonIndx) {
-      classes.push("activeButton");
-    }
-    return classes.join(" ");
+  makeClassList = index => {
+    return classNames('button', {
+      activeButton: index === this.state.activeButtonIndx,
+    });
+    // const classes = ['button'];
+    // if (index === this.state.activeButtonIndx) {
+    //   classes.push('activeButton');
+    // }
+    // return classes.join(' ');
   };
 
   render() {
