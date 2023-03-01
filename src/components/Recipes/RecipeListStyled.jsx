@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -41,11 +41,8 @@ const RecipeInfo = styled.div`
   justify-content: center;
   font-size: 16px;
   svg {
-    color: red;
     margin-right: 5px;
-  }
-
-  span {
+    color: red;
   }
 `;
 
@@ -53,8 +50,8 @@ const Bagge1 = styled.span`
   width: 100px;
   padding: 5px;
   border: 2px solid black;
-  background: ${(props) => {
-    return props.isActive ? "red" : "white";
+  background: ${props => {
+    return props.isActive ? 'red' : 'white';
   }};
 `;
 

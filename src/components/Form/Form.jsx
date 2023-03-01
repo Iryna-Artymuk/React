@@ -1,28 +1,28 @@
-import { Component } from "react";
-import "./Form.css";
-import "./Checkbox.css";
-import { RiEmotionHappyLine, RiEmotionSadLine } from "react-icons/ri";
-import { BsEmojiNeutral, BsEmojiAngry, BsCheckLg } from "react-icons/bs";
+import { Component } from 'react';
+import './Form.css';
+import './Checkbox.css';
+import { RiEmotionHappyLine, RiEmotionSadLine } from 'react-icons/ri';
+import { BsEmojiNeutral, BsEmojiAngry, BsCheckLg } from 'react-icons/bs';
 
 class Form extends Component {
   state = {
-    name: "",
-    phone: "",
-    rating: "super-happy",
-    products: "",
-    agreement: "false",
+    name: '',
+    phone: '',
+    rating: 'super-happy',
+    products: '',
+    agreement: 'false',
   };
-  hendelChange = (event) => {
+  hendelChange = event => {
     this.setState({
       [event.currentTarget.name]: event.currentTarget.value,
     });
   };
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     this.props.FormSubmit(this.state);
     this.reset();
   };
-  handelAgreementChange = (event) => {
+  handelAgreementChange = event => {
     this.setState({
       agreement: event.currentTarget.checked,
     });
@@ -31,8 +31,8 @@ class Form extends Component {
   };
   reset = () => {
     this.setState({
-      name: "",
-      phone: "",
+      name: '',
+      phone: '',
     });
   };
   render() {
@@ -41,32 +41,32 @@ class Form extends Component {
         <form
           onSubmit={this.handleSubmit}
           style={{
-            border: "2px solid purple",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+            border: '2px solid purple',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
             gap: 10,
-            background: "green",
+            background: 'green',
             fontSize: 24,
             padding: 20,
           }}
         >
           <label
             style={{
-              width: "70%",
-              display: "flex",
-              flexDirection: "column",
+              width: '70%',
+              display: 'flex',
+              flexDirection: 'column',
               gap: 5,
             }}
           >
             Name
             <input
               style={{
-                width: "100%",
-                border: "2px solid purple",
+                width: '100%',
+                border: '2px solid purple',
                 height: 50,
-                background: "wheat",
+                background: 'wheat',
                 borderRadius: 10,
                 fontSize: 24,
                 padding: 10,
@@ -80,19 +80,19 @@ class Form extends Component {
           </label>
           <label
             style={{
-              width: "70%",
-              display: "flex",
-              flexDirection: "column",
+              width: '70%',
+              display: 'flex',
+              flexDirection: 'column',
               gap: 5,
             }}
           >
             Phone Number
             <input
               style={{
-                width: "100%",
-                border: "2px solid purple",
+                width: '100%',
+                border: '2px solid purple',
                 height: 50,
-                background: "wheat",
+                background: 'wheat',
                 borderRadius: 10,
                 fontSize: 24,
                 padding: 10,
@@ -106,12 +106,12 @@ class Form extends Component {
           </label>
           <button
             style={{
-              width: "30%",
+              width: '30%',
               height: 50,
-              backgroundColor: "blueviolet",
+              backgroundColor: 'blueviolet',
               borderRadius: 10,
               fontSize: 18,
-              color: "aliceblue",
+              color: 'aliceblue',
             }}
             type="submit"
           >
@@ -134,9 +134,9 @@ class Form extends Component {
                     id="super-happy"
                     value="super-happy"
                     onChange={this.hendelChange}
-                    checked={this.state.rating === "super-happy"}
+                    checked={this.state.rating === 'super-happy'}
                   />
-                  <RiEmotionHappyLine />
+                  <RiEmotionHappyLine className="rating-form-svg " />
                 </label>
 
                 <label htmlFor="neutral">
@@ -147,9 +147,9 @@ class Form extends Component {
                     id="neutral"
                     value="neutral"
                     onChange={this.hendelChange}
-                    checked={this.state.rating === "neutral"}
+                    checked={this.state.rating === 'neutral'}
                   />
-                  <BsEmojiNeutral />
+                  <BsEmojiNeutral className="rating-form-svg " />
                 </label>
 
                 <label htmlFor="sad">
@@ -160,9 +160,9 @@ class Form extends Component {
                     id="sad"
                     value="sad"
                     onChange={this.hendelChange}
-                    checked={this.state.rating === "sad"}
+                    checked={this.state.rating === 'sad'}
                   />
-                  <RiEmotionSadLine />
+                  <RiEmotionSadLine className="rating-form-svg " />
                 </label>
 
                 <label htmlFor="super-sad">
@@ -174,7 +174,7 @@ class Form extends Component {
                     value="super-sad"
                     onChange={this.hendelChange}
                   />
-                  <BsEmojiAngry />
+                  <BsEmojiAngry className="rating-form-svg " />
                 </label>
               </form>
             </div>
@@ -190,7 +190,7 @@ class Form extends Component {
               name="products"
               value="Milk"
               onChange={this.hendelChange}
-              checked={this.state.products === "Milk"}
+              checked={this.state.products === 'Milk'}
             />
 
             <label className="label" htmlFor="1">
@@ -205,7 +205,7 @@ class Form extends Component {
               id="2"
               value="Sugar"
               onChange={this.hendelChange}
-              checked={this.state.products === "Sugar"}
+              checked={this.state.products === 'Sugar'}
             />
 
             <label className="label" htmlFor="2">
@@ -220,7 +220,7 @@ class Form extends Component {
               id="3"
               value="Bread"
               onChange={this.hendelChange}
-              checked={this.state.products === "Bread"}
+              checked={this.state.products === 'Bread'}
             />
 
             <label className="label" htmlFor="3">

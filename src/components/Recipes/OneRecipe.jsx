@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { BsAlarm } from "react-icons/bs";
-import { AiOutlinePieChart } from "react-icons/ai";
-import { HiOutlineChartBar } from "react-icons/hi";
+import PropTypes from 'prop-types';
+import { BsAlarm } from 'react-icons/bs';
+import { AiOutlinePieChart } from 'react-icons/ai';
+import { HiOutlineChartBar } from 'react-icons/hi';
 import {
   Image,
   Title,
@@ -9,7 +9,7 @@ import {
   RecipeInfo,
   Bagge1,
   ControlRecipeWrapper,
-} from "./RecipeListStyled";
+} from './RecipeListStyled';
 
 export default function OneRecipe(oneRecipeProps) {
   const {
@@ -27,15 +27,15 @@ export default function OneRecipe(oneRecipeProps) {
 
   return (
     <ItemContainer>
-      {" "}
-      <div style={{ with: "150px", position: "relative" }}>
+      {' '}
+      <div style={{ with: '150px', position: 'relative' }}>
         <Image src={image} alt={oneRecipeProps.name} width="240" />
         <Title>{dishName}</Title>
 
         <ControlRecipeWrapper>
           <button onClick={() => deleteRecipe(id)}> Delete </button>
           <button
-            onClick={(event) => {
+            onClick={event => {
               toggleModal();
 
               addImgUrl(image);
@@ -47,16 +47,16 @@ export default function OneRecipe(oneRecipeProps) {
       </div>
       <RecipeInfo>
         <p>
-          <BsAlarm />
+          <BsAlarm className="svg" />
           {time} min
         </p>
         <p>
-          {" "}
+          {' '}
           <AiOutlinePieChart />
           {servings}servings
         </p>
         <p>
-          {" "}
+          {' '}
           <HiOutlineChartBar />
           {calories}calories
         </p>
@@ -64,9 +64,9 @@ export default function OneRecipe(oneRecipeProps) {
       <div>
         <Title>Difficulty</Title>
         <RecipeInfo>
-          <Bagge1 isActive={difficulty === "easy"}>Easy</Bagge1>
-          <Bagge1 isActive={difficulty === "medium"}>Medium</Bagge1>
-          <Bagge1 isActive={difficulty === "hard"}>Hard</Bagge1>
+          <Bagge1 isActive={difficulty === 'easy'}>Easy</Bagge1>
+          <Bagge1 isActive={difficulty === 'medium'}>Medium</Bagge1>
+          <Bagge1 isActive={difficulty === 'hard'}>Hard</Bagge1>
         </RecipeInfo>
       </div>
     </ItemContainer>
@@ -80,5 +80,5 @@ OneRecipe.propTypes = {
   servings: PropTypes.number.isRequired,
   calories: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
-  difficulty: PropTypes.oneOf(["easy", "medium", "hard"]),
+  difficulty: PropTypes.oneOf(['easy', 'medium', 'hard']),
 };

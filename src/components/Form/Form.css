@@ -33,7 +33,7 @@
   border-radius: 2.2rem;
 }
 
-svg {
+.rating-form-svg {
   fill: rgb(255, 255, 255);
   height: 3.6rem;
   width: 3.6rem;
@@ -52,42 +52,42 @@ svg {
 }
 
 /* сховали оригінальний інпут */
-input[type="radio"] {
+input[type='radio'] {
   position: absolute;
   opacity: 0;
 }
 
-input[type="radio"] + svg {
+input[type='radio'] + .rating-form-svg {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 
-input + svg {
+input + .rating-form-svg {
   cursor: pointer;
 }
-input:checked + svg {
+input:checked + .rating-form-svg {
   scale: 2;
 }
-input[class="super-happy"]:hover + svg,
-input[class="super-happy"]:checked + svg,
-input[class="super-happy"]:focus + svg {
+input[class='super-happy']:hover .rating-form-svg,
+input[class='super-happy']:checked + .rating-form-svg,
+input[class='super-happy']:focus + .rating-form-svg {
   fill: rgb(0, 109, 217);
 }
 
-input[class="neutral"]:hover + svg,
-input[class="neutral"]:checked + svg,
-input[class="neutral"]:focus + svg {
+input[class='neutral']:hover + .rating-form-svg,
+input[class='neutral']:checked + .rating-form-svg,
+input[class='neutral']:focus + .rating-form-svg {
   fill: rgb(232, 214, 0);
 }
 
-input[class="sad"]:hover + svg,
-input[class="sad"]:checked + svg,
-input[class="sad"]:focus + svg {
+input[class='sad']:hover + .rating-form-svg,
+input[class='sad']:checked + .rating-form-svg,
+input[class='sad']:focus + .rating-form-svg {
   fill: rgb(229, 132, 0);
 }
 
-input[class="super-sad"]:hover + svg,
-input[class="super-sad"]:checked + svg,
-input[class="super-sad"]:focus + svg {
+input[class='super-sad']:hover + .rating-form-svg,
+input[class='super-sad']:checked + .rating-form-svg,
+input[class='super-sad']:focus + .rating-form-svg {
   fill: rgb(239, 42, 16);
 }
