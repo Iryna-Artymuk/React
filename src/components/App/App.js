@@ -57,6 +57,17 @@ class App extends Component {
   //   }));
   // };
 
+  addTodo = text => {
+    const newTodo = {
+      id: 'id-4',
+      name: text,
+      completed: false,
+    };
+
+    this.setState(prevState => ({
+      todo: [newTodo, ...prevState.todo],
+    }));
+  };
   ToggleComplete = todoID => {
     this.setState(({ todo }) => ({
       todo: todo.map(todoItem =>
@@ -96,6 +107,7 @@ class App extends Component {
         )}
         <Counter startValue={1} />
         <TodoList
+          addTodo={this.addTodo}
           todo={this.state.todo}
           deleteToDo={this.deleteToDo}
           ToggleComplete={this.ToggleComplete}

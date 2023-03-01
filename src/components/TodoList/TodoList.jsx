@@ -3,12 +3,12 @@ import { AiOutlineClose } from 'react-icons/ai';
 import './TodoList.css';
 import TodoEditor from '../TodoEditor/TodoEditor';
 const TodoList = props => {
-  const { todo, deleteToDo, completed, ToggleComplete } = props;
+  const { todo, deleteToDo, completed, ToggleComplete, addTodo } = props;
 
   return (
     <div className="todoList ">
       <h3> To do list </h3>
-      <TodoEditor />
+      <TodoEditor addTodo={addTodo} />
       <ul>
         {todo.map(item => {
           return (
