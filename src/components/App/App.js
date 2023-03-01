@@ -14,6 +14,7 @@ import ColorPicker from '../ColorPicker/ColorPicker';
 import TodoList from '../TodoList';
 import Modal from './Modal';
 import Form from '../Form';
+
 class App extends Component {
   state = {
     todo: [
@@ -25,6 +26,7 @@ class App extends Component {
     modalActive: false,
     selectedImg: null,
     inputValue: 'iryna',
+    firterValue: '',
   };
 
   deleteToDo = toDoId => {
@@ -85,6 +87,11 @@ class App extends Component {
   formSubmitHandler = data => {
     console.log(data);
   };
+  handelFilterChange = event => {
+    this.setState({
+      firterValue: event.currentTarget.value,
+    });
+  };
   // hendelInputChange = (event) => {
   //   console.log(event.currentTarget.value);
   //   this.setState({ inputValue: event.currentTarget.value });
@@ -96,6 +103,10 @@ class App extends Component {
   // };
 
   render() {
+    const normalizeFilterValue = this.state.firterValue.toLowerCase();
+    const filteredTodo = this.state.todo.filter(item =>
+      item.name.toLowerCase().includes(normalizeFilterValue)
+    );
     return (
       <Layout>
         <Form FormSubmit={this.formSubmitHandler} />
@@ -107,11 +118,14 @@ class App extends Component {
         )}
         <Counter startValue={1} />
         <TodoList
+          onFilterEnter={this.handelFilterChange}
+          value={this.state.firterValue}
           addTodo={this.addTodo}
-          todo={this.state.todo}
+          todo={filteredTodo}
           deleteToDo={this.deleteToDo}
           ToggleComplete={this.ToggleComplete}
         />
+
         <ColorPicker options={options} />
         <Dropdown toggleModal={this.toggleModal} addImgUrl={this.addImgUrl} />
         <Global styles={emotionReset} />

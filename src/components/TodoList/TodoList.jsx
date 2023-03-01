@@ -2,12 +2,22 @@ import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import './TodoList.css';
 import TodoEditor from '../TodoEditor/TodoEditor';
+import Filter from '../Filter/Filter';
 const TodoList = props => {
-  const { todo, deleteToDo, completed, ToggleComplete, addTodo } = props;
+  const {
+    todo,
+    deleteToDo,
+    completed,
+    ToggleComplete,
+    addTodo,
+    value,
+    onFilterEnter,
+  } = props;
 
   return (
     <div className="todoList ">
       <h3> To do list </h3>
+      <Filter value={value} onFilterEnter={onFilterEnter} />
       <TodoEditor addTodo={addTodo} />
       <ul>
         {todo.map(item => {
