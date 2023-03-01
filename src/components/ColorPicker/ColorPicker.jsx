@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ColorPicker.css';
 
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 class ColorPicker extends Component {
   state = {
     activeButtonIndx: 0,
@@ -12,6 +12,12 @@ class ColorPicker extends Component {
     });
   };
   makeClassList = index => {
+    // const cx = classNames.bind(styles);
+    // let className = cx({
+    //   activeButtonIndx: index,
+    // });
+
+    // return className;
     return classNames('button', {
       activeButton: index === this.state.activeButtonIndx,
     });

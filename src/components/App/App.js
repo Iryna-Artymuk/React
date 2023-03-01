@@ -1,47 +1,63 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import data from "../data.json";
-import options from "../data/color.json";
+import options from '../data/color.json';
 // import recipes from "../Recipes/recipes.json";
 // import PaintingList from "../Painting/PaintingList";
 // import RecipesList from "../Recipes/RecipesList";
-import { Layout } from "../Layout/Layout.styled";
-import { Global } from "@emotion/react";
-import { emotionReset } from "../Global/Global.styled";
+import { Layout } from '../Layout/Layout.styled';
+import { Global } from '@emotion/react';
+import { emotionReset } from '../Global/Global.styled';
 
-import Counter from "../Counter";
-import Dropdown from "../Dropdown/Dropdown";
-import ColorPicker from "../ColorPicker/ColorPicker";
-import TodoList from "../TodoList";
-import Modal from "./Modal";
-import Form from "../Form";
+import Counter from '../Counter';
+import Dropdown from '../Dropdown/Dropdown';
+import ColorPicker from '../ColorPicker/ColorPicker';
+import TodoList from '../TodoList';
+import Modal from './Modal';
+import Form from '../Form';
 class App extends Component {
   state = {
     todo: [
-      { id: "id-1", name: "Learn React.js", complited: false },
-      { id: "id-2", name: "Find job", complited: false },
-      { id: "id-3", name: "Go for vacation to Tunisia", complited: false },
+      { id: 'id-1', name: 'Learn React.js', completed: false },
+      { id: 'id-2', name: 'Find job', completed: false },
+      { id: 'id-3', name: 'Go for vacation to Tunisia', completed: false },
     ],
+
     modalActive: false,
     selectedImg: null,
-    inputValue: "iryna",
+    inputValue: 'iryna',
   };
-  deleteToDo = (toDoId) => {
-    console.log("delete");
-    this.setState((prevState) => ({
-      todo: prevState.todo.filter((toDoItem) => toDoItem.id !== toDoId),
+
+  deleteToDo = toDoId => {
+    console.log('delete');
+    this.setState(prevState => ({
+      todo: prevState.todo.filter(toDoItem => toDoItem.id !== toDoId),
     }));
   };
   toggleModal = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       modalActive: !prevState.modalActive,
     }));
   };
 
-  addImgUrl = (url) =>
+  //  при зміні стану повернути обєкт в якому розпилити старий обєкт і додай нову властивість
+  ToggleComplete = todoID => {
+    this.setState(prevState => ({
+      todo: prevState.todo.map(todoItem => {
+        console.log(todoItem);
+        if (todoItem.id === todoID)
+          return {
+            ...todoItem,
+            completed: !todoItem.completed,
+          };
+        return todoItem;
+      }),
+    }));
+  };
+  addImgUrl = url =>
     this.setState({
       selectedImg: url,
     });
-  formSubmitHandler = (data) => {
+  formSubmitHandler = data => {
     console.log(data);
   };
   // hendelInputChange = (event) => {
@@ -77,7 +93,11 @@ class App extends Component {
           />
         )}
         <Counter startValue={1} />
-        <TodoList todo={this.state.todo} deleteToDo={this.deleteToDo} />
+        <TodoList
+          todo={this.state.todo}
+          deleteToDo={this.deleteToDo}
+          ToggleComplete={this.ToggleComplete}
+        />
         <ColorPicker options={options} />
         <Dropdown toggleModal={this.toggleModal} addImgUrl={this.addImgUrl} />
         <Global styles={emotionReset} />
