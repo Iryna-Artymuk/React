@@ -28,7 +28,6 @@ class App extends Component {
   };
 
   deleteToDo = toDoId => {
-    console.log('delete');
     this.setState(prevState => ({
       todo: prevState.todo.filter(toDoItem => toDoItem.id !== toDoId),
     }));
@@ -39,11 +38,15 @@ class App extends Component {
     }));
   };
 
-  //  при зміні стану повернути обєкт в якому розпилити старий обєкт і додай нову властивість
+  //  при зміні стану по кліку на input[checkbox] первірити якщо id по якому клікнули і передали свівпадає в map
+  //з одним з id з масиву тоді в satate повернути новий  обєкт в якому розпилити старий обєкт і додай нову властивість
+  // нову змінену властивість complited
+  // якщо input checked замінити стилі
+  // або якщо не співпадає повернути старий  57 рядок
+
   ToggleComplete = todoID => {
     this.setState(prevState => ({
       todo: prevState.todo.map(todoItem => {
-        console.log(todoItem);
         if (todoItem.id === todoID)
           return {
             ...todoItem,
@@ -73,18 +76,6 @@ class App extends Component {
   render() {
     return (
       <Layout>
-        {/* <input
-          style={{
-            border: "2px solid purple",
-            height: 50,
-            background: "wheat",
-            fontSize: 32,
-            padding: 10,
-          }}
-          type="text"
-          value={this.state.inputValue}
-          onChange={this.hendelChange}
-        ></input> */}
         <Form FormSubmit={this.formSubmitHandler} />
         {this.state.modalActive && (
           <Modal

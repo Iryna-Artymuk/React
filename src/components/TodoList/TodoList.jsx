@@ -11,16 +11,20 @@ const TodoList = props => {
         {todo.map(item => {
           return (
             <li key={item.id} className="item">
-              <input
-                type="checkbox"
-                className="TodoList__checkbox"
-                checked={completed}
-                onChange={() => ToggleComplete(item.id)}
-              />
+              <label>
+                <input
+                  type="checkbox"
+                  className="TodoList__checkbox"
+                  checked={completed}
+                  onChange={() => ToggleComplete(item.id)}
+                />
+                <p>{item.name} </p>
+              </label>
 
-              <p>{item.name} </p>
-
-              <button onClick={() => deleteToDo(item.id)}>
+              <button
+                className="item-label-button "
+                onClick={() => deleteToDo(item.id)}
+              >
                 <AiOutlineClose />
               </button>
             </li>

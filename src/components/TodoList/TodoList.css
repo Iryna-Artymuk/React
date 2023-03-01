@@ -23,6 +23,9 @@
 }
 .item {
   position: relative;
+  width: 100%;
+}
+.item label {
   display: flex;
 
   width: 100%;
@@ -43,10 +46,10 @@
   box-shadow: 0.3em 0.3em rgba(0.4, 0.4, 0.4, 0.4);
   background-color: aqua;
 }
-.item p {
+.item label p {
   width: 100%;
 }
-.item button {
+.item-label-button {
   position: absolute;
 
   top: 5px;

@@ -10,7 +10,7 @@ class Form extends Component {
     phone: '',
     rating: 'super-happy',
     products: '',
-    agreement: 'false',
+    agreement: false,
   };
   hendelChange = event => {
     this.setState({
@@ -230,12 +230,11 @@ class Form extends Component {
           </div>
 
           <input
-            name="lisense"
             className="boxtags-input"
             type="checkbox"
             id="4"
             onChange={this.handelAgreementChange}
-            checked={this.agreement}
+            checked={this.state.agreement}
             // value=" this.state.agreement"
           />
 
@@ -243,7 +242,14 @@ class Form extends Component {
             <BsCheckLg className="iconAfter" />
             Agree to pay
           </label>
-          <button disabled={!this.state.agreement}> Buy </button>
+
+          <button
+            className="buy"
+            type="submit"
+            disabled={!this.state.agreement}
+          >
+            Buy
+          </button>
         </div>
       </>
     );
