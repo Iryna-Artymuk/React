@@ -11,10 +11,11 @@ import {
   ControlRecipeWrapper,
 } from './RecipeListStyled';
 
+import defaultImg from './img.jpg';
 export default function OneRecipe(oneRecipeProps) {
   const {
     id,
-    image,
+    image = defaultImg,
     time,
     servings,
     calories,
@@ -24,16 +25,23 @@ export default function OneRecipe(oneRecipeProps) {
     toggleModal,
     addImgUrl,
   } = oneRecipeProps;
-
+  console.log(time);
   return (
     <ItemContainer>
       {' '}
       <div style={{ with: '150px', position: 'relative' }}>
-        <Image src={image} alt={oneRecipeProps.name} width="240" />
+        <Image
+          src={image}
+          alt={oneRecipeProps.name}
+          width="240"
+        />
         <Title>{dishName}</Title>
 
         <ControlRecipeWrapper>
-          <button onClick={() => deleteRecipe(id)}> Delete </button>
+          <button onClick={() => deleteRecipe(id)}>
+            {' '}
+            Delete{' '}
+          </button>
           <button
             onClick={event => {
               toggleModal();
@@ -64,9 +72,15 @@ export default function OneRecipe(oneRecipeProps) {
       <div>
         <Title>Difficulty</Title>
         <RecipeInfo>
-          <Bagge1 isActive={difficulty === 'easy'}>Easy</Bagge1>
-          <Bagge1 isActive={difficulty === 'medium'}>Medium</Bagge1>
-          <Bagge1 isActive={difficulty === 'hard'}>Hard</Bagge1>
+          <Bagge1 isActive={difficulty === 'easy'}>
+            Easy
+          </Bagge1>
+          <Bagge1 isActive={difficulty === 'medium'}>
+            Medium
+          </Bagge1>
+          <Bagge1 isActive={difficulty === 'hard'}>
+            Hard
+          </Bagge1>
         </RecipeInfo>
       </div>
     </ItemContainer>

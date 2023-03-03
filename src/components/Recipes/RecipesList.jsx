@@ -1,14 +1,15 @@
-import PropTypes from "prop-types";
-import OneRecipe from "./OneRecipe";
-import { List } from "./RecipeListStyled";
-import { Item } from "./RecipeListStyled";
+import PropTypes from 'prop-types';
+import OneRecipe from './OneRecipe';
+import { List } from './RecipeListStyled';
+import { Item } from './RecipeListStyled';
 
 export default function RecipesList(props) {
-  const { items, deleteRecipe, toggleModal, addImgUrl } = props;
+  const { items, deleteRecipe, toggleModal, addImgUrl } =
+    props;
 
   return (
     <List>
-      {items.map((item) => (
+      {items.map(item => (
         <Item key={item.id}>
           <OneRecipe
             addImgUrl={addImgUrl}
@@ -31,7 +32,7 @@ export default function RecipesList(props) {
 RecipesList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
     })
   ),
 };

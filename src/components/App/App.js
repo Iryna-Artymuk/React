@@ -18,9 +18,17 @@ import Form from '../Form';
 class App extends Component {
   state = {
     todo: [
-      { id: 'id-1', name: 'Learn React.js', completed: false },
+      {
+        id: 'id-1',
+        name: 'Learn React.js',
+        completed: false,
+      },
       { id: 'id-2', name: 'Find job', completed: false },
-      { id: 'id-3', name: 'Go for vacation to Tunisia', completed: false },
+      {
+        id: 'id-3',
+        name: 'Go for vacation to Tunisia',
+        completed: false,
+      },
     ],
 
     modalActive: false,
@@ -31,7 +39,9 @@ class App extends Component {
 
   deleteToDo = toDoId => {
     this.setState(prevState => ({
-      todo: prevState.todo.filter(toDoItem => toDoItem.id !== toDoId),
+      todo: prevState.todo.filter(
+        toDoItem => toDoItem.id !== toDoId
+      ),
     }));
   };
   toggleModal = () => {
@@ -103,12 +113,17 @@ class App extends Component {
   // };
 
   render() {
-    const normalizeFilterValue = this.state.firterValue.toLowerCase();
+    const normalizeFilterValue =
+      this.state.firterValue.toLowerCase();
     const filteredTodo = this.state.todo.filter(item =>
       item.name.toLowerCase().includes(normalizeFilterValue)
     );
     return (
       <Layout>
+        <Dropdown
+          toggleModal={this.toggleModal}
+          addImgUrl={this.addImgUrl}
+        />
         <Form FormSubmit={this.formSubmitHandler} />
         {this.state.modalActive && (
           <Modal
@@ -127,7 +142,7 @@ class App extends Component {
         />
 
         <ColorPicker options={options} />
-        <Dropdown toggleModal={this.toggleModal} addImgUrl={this.addImgUrl} />
+
         <Global styles={emotionReset} />
         {/* <PaintingList items={data} /> */}
         {/* <RecipesList items={recipes} /> */}
