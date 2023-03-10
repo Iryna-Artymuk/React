@@ -3,20 +3,20 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 // import data from "../data.json";
-// import options from '../data/color.json';
+import options from '../data/color.json';
 // import recipes from "../Recipes/recipes.json";
 // import PaintingList from "../Painting/PaintingList";
 // import RecipesList from "../Recipes/RecipesList";
 import { Layout } from '../Layout/Layout.styled';
-// import { Global } from '@emotion/react';
-// import { emotionReset } from '../Global/Global.styled';
+import { Global } from '@emotion/react';
+import { emotionReset } from '../Global/Global.styled';
 
-// import Counter from '../Counter';
-// import Dropdown from '../Dropdown/Dropdown';
-// import ColorPicker from '../ColorPicker/ColorPicker';
-// import TodoList from '../TodoList';
-// import Modal from '../Modal/Modal';
-// import Form from '../Form';
+import Counter from '../Counter';
+import Dropdown from '../Dropdown/Dropdown';
+import ColorPicker from '../ColorPicker/ColorPicker';
+import TodoList from '../TodoList';
+import Modal from '../Modal/Modal';
+import Form from '../Form';
 import PokemonForm from '../Fetch Pokemon/Form';
 class App extends Component {
   state = {
@@ -124,11 +124,11 @@ class App extends Component {
     });
   };
   render() {
-    // const normalizeFilterValue =
-    //   this.state.firterValue.toLowerCase();
-    // const filteredTodo = this.state.todo.filter(item =>
-    //   item.name.toLowerCase().includes(normalizeFilterValue)
-    // );
+    const normalizeFilterValue =
+      this.state.firterValue.toLowerCase();
+    const filteredTodo = this.state.todo.filter(item =>
+      item.name.toLowerCase().includes(normalizeFilterValue)
+    );
 
     return (
       <Layout>
@@ -137,7 +137,7 @@ class App extends Component {
           hideProgressBar={true}
         />
         <PokemonForm onSubmit={this.getNameFromInput} />
-        {/* <Dropdown
+        <Dropdown
           toggleModal={this.toggleModal}
           addImgUrl={this.addImgUrl}
         />
@@ -160,7 +160,7 @@ class App extends Component {
 
         <ColorPicker options={options} />
 
-        <Global styles={emotionReset} /> */}
+        <Global styles={emotionReset} />
         {/* <PaintingList items={data} /> */}
         {/* <RecipesList items={recipes} /> */}
       </Layout>
