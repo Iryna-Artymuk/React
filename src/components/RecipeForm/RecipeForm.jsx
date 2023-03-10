@@ -1,8 +1,7 @@
 import uniqid from 'uniqid';
-
 import { Formik, Field } from 'formik';
 import defaultImg from './img.jpg';
-
+import PhoneInputField from '../Form/FormInput';
 // import { Styled} from './StyledRecipeForm';
 import * as Yup from 'yup';
 import {
@@ -34,9 +33,7 @@ export default function RecipeForm(props) {
     time: Yup.string().required(),
     servings: Yup.number().required().positive(),
     calories: Yup.number().required().positive(),
-    image: Yup.string().default(
-      'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'
-    ),
+    image: Yup.string(),
     difficulty:
       Yup.array().oneOf[('easy', 'medium', 'hard')],
   });
@@ -49,9 +46,9 @@ export default function RecipeForm(props) {
         calories: '',
         image: '',
         difficulty: 'easy',
+        phone_number: '',
       }}
-      onSubmit={values => {
-        console.log(values.time);
+      onSubmit={(values, actions) => {
         addNewRecipe({
           id: uniqid('recipe-'),
           ...values,
@@ -60,6 +57,7 @@ export default function RecipeForm(props) {
           calories: Number(values.calories),
           name: defaultName(values),
         });
+        actions.resetForm();
       }}
       validationSchema={RecipeValidationSchema}
     >
@@ -79,7 +77,7 @@ export default function RecipeForm(props) {
           <Field name="servings" />
           <StyledErrorMessage
             name="servings"
-            mponent="div"
+            component="div"
           />
         </StyledLable>
         <StyledLable>
@@ -105,6 +103,11 @@ export default function RecipeForm(props) {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </Field>
+          <Field
+            type="tel"
+            name="phone_number"
+            component={PhoneInputField}
+          />
         </StyledLable>
 
         <StyledButton type="submit">

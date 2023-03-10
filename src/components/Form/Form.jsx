@@ -1,8 +1,15 @@
 import { Component } from 'react';
 import './Form.css';
 import './Checkbox.css';
-import { RiEmotionHappyLine, RiEmotionSadLine } from 'react-icons/ri';
-import { BsEmojiNeutral, BsEmojiAngry, BsCheckLg } from 'react-icons/bs';
+import {
+  RiEmotionHappyLine,
+  RiEmotionSadLine,
+} from 'react-icons/ri';
+import {
+  BsEmojiNeutral,
+  BsEmojiAngry,
+  BsCheckLg,
+} from 'react-icons/bs';
 
 class Form extends Component {
   state = {
@@ -134,7 +141,9 @@ class Form extends Component {
                     id="super-happy"
                     value="super-happy"
                     onChange={this.hendelChange}
-                    checked={this.state.rating === 'super-happy'}
+                    checked={
+                      this.state.rating === 'super-happy'
+                    }
                   />
                   <RiEmotionHappyLine className="rating-form-svg " />
                 </label>
@@ -147,7 +156,9 @@ class Form extends Component {
                     id="neutral"
                     value="neutral"
                     onChange={this.hendelChange}
-                    checked={this.state.rating === 'neutral'}
+                    checked={
+                      this.state.rating === 'neutral'
+                    }
                   />
                   <BsEmojiNeutral className="rating-form-svg " />
                 </label>

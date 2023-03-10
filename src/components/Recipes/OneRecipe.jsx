@@ -25,7 +25,7 @@ export default function OneRecipe(oneRecipeProps) {
     toggleModal,
     addImgUrl,
   } = oneRecipeProps;
-  console.log(time);
+
   return (
     <ItemContainer>
       {' '}

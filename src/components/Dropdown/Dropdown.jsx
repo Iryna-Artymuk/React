@@ -6,8 +6,29 @@ import RecipeForm from '../RecipeForm/RecipeForm';
 class Dropdown extends React.Component {
   state = {
     visible: true,
-    recipes,
+    recipes: [],
   };
+
+  componentDidMount() {
+    const StorageRecipes = localStorage.getItem('recipes');
+    const parsedResipes = JSON.parse(StorageRecipes);
+    // первірка якшо в сторедж уже є рецепти записати їх в стейт і зарендирити якщо ні записати початковий стейт
+    // ? перeвірка чи   StoregeRecipes має значення true
+    StorageRecipes !== null
+      ? this.setState({ recipes: parsedResipes })
+      : this.setState({ recipes: recipes });
+  }
+
+  // якщо попередній стейт відрізняється ід попередньго значить є зміни і їх треба додати в локалсторедж
+  //щоб потім пререзавантаженні сорінки їх звідти взяти і зарендирити
+  componentDidUpdate(_, prevState) {
+    if (prevState.recipes !== this.state.recipes) {
+      localStorage.setItem(
+        'recipes',
+        JSON.stringify(this.state.recipes)
+      );
+    }
+  }
 
   toggle = () => {
     this.setState(prevState => ({

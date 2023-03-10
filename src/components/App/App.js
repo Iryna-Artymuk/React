@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 // import data from "../data.json";
-import options from '../data/color.json';
+// import options from '../data/color.json';
 // import recipes from "../Recipes/recipes.json";
 // import PaintingList from "../Painting/PaintingList";
 // import RecipesList from "../Recipes/RecipesList";
 import { Layout } from '../Layout/Layout.styled';
-import { Global } from '@emotion/react';
-import { emotionReset } from '../Global/Global.styled';
+// import { Global } from '@emotion/react';
+// import { emotionReset } from '../Global/Global.styled';
 
-import Counter from '../Counter';
-import Dropdown from '../Dropdown/Dropdown';
-import ColorPicker from '../ColorPicker/ColorPicker';
-import TodoList from '../TodoList';
-import Modal from './Modal';
-import Form from '../Form';
-
+// import Counter from '../Counter';
+// import Dropdown from '../Dropdown/Dropdown';
+// import ColorPicker from '../ColorPicker/ColorPicker';
+// import TodoList from '../TodoList';
+// import Modal from '../Modal/Modal';
+// import Form from '../Form';
+import PokemonForm from '../Fetch Pokemon/Form';
 class App extends Component {
   state = {
     todo: [
@@ -32,9 +35,9 @@ class App extends Component {
     ],
 
     modalActive: false,
-    selectedImg: null,
-    inputValue: 'iryna',
     firterValue: '',
+    irterValue: '',
+    pokemonName: '',
   };
 
   deleteToDo = toDoId => {
@@ -44,6 +47,7 @@ class App extends Component {
       ),
     }));
   };
+
   toggleModal = () => {
     this.setState(prevState => ({
       modalActive: !prevState.modalActive,
@@ -102,6 +106,7 @@ class App extends Component {
       firterValue: event.currentTarget.value,
     });
   };
+
   // hendelInputChange = (event) => {
   //   console.log(event.currentTarget.value);
   //   this.setState({ inputValue: event.currentTarget.value });
@@ -111,16 +116,28 @@ class App extends Component {
   //   console.log(event.currentTarget.value);
   //   this.setState({ name: event.currentTarget.value });
   // };
+  getNameFromInput = name => {
+    // робим перевірку щоб не записувати путий рядок в стейт і не відпрвляти пустий http записувати
 
+    this.setState({
+      pokemonName: name,
+    });
+  };
   render() {
-    const normalizeFilterValue =
-      this.state.firterValue.toLowerCase();
-    const filteredTodo = this.state.todo.filter(item =>
-      item.name.toLowerCase().includes(normalizeFilterValue)
-    );
+    // const normalizeFilterValue =
+    //   this.state.firterValue.toLowerCase();
+    // const filteredTodo = this.state.todo.filter(item =>
+    //   item.name.toLowerCase().includes(normalizeFilterValue)
+    // );
+
     return (
       <Layout>
-        <Dropdown
+        <ToastContainer
+          autoClose={2000}
+          hideProgressBar={true}
+        />
+        <PokemonForm onSubmit={this.getNameFromInput} />
+        {/* <Dropdown
           toggleModal={this.toggleModal}
           addImgUrl={this.addImgUrl}
         />
@@ -143,7 +160,7 @@ class App extends Component {
 
         <ColorPicker options={options} />
 
-        <Global styles={emotionReset} />
+        <Global styles={emotionReset} /> */}
         {/* <PaintingList items={data} /> */}
         {/* <RecipesList items={recipes} /> */}
       </Layout>

@@ -8,24 +8,30 @@ export default function RecipesList(props) {
     props;
 
   return (
-    <List>
-      {items.map(item => (
-        <Item key={item.id}>
-          <OneRecipe
-            addImgUrl={addImgUrl}
-            toggleModal={toggleModal}
-            deleteRecipe={deleteRecipe}
-            id={item.id}
-            dishName={item.name}
-            image={item.image}
-            time={item.time}
-            servings={item.servings}
-            calories={item.calories}
-            difficulty={item.difficulty}
-          />
-        </Item>
-      ))}
-    </List>
+    <>
+      <List>
+        {items.map(item => (
+          <Item key={item.id}>
+            <OneRecipe
+              addImgUrl={addImgUrl}
+              toggleModal={toggleModal}
+              deleteRecipe={deleteRecipe}
+              id={item.id}
+              dishName={item.name}
+              image={item.image}
+              time={item.time}
+              servings={item.servings}
+              calories={item.calories}
+              difficulty={item.difficulty}
+            />
+          </Item>
+        ))}
+      </List>
+
+      <button type="button" onClick={toggleModal}>
+        Add recipe
+      </button>
+    </>
   );
 }
 
