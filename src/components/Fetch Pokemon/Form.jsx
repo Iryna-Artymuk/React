@@ -50,6 +50,7 @@ export default class PokemonForm extends Component {
             width: '70%',
             height: 30,
             background: 'white',
+            fontSize: 24,
           }}
         />
         <button

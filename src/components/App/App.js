@@ -18,6 +18,7 @@ import TodoList from '../TodoList';
 import Modal from '../Modal/Modal';
 import Form from '../Form';
 import PokemonForm from '../Fetch Pokemon/Form';
+import { PokemonInfo } from '../Fetch Pokemon/PokemonInfo';
 class App extends Component {
   state = {
     todo: [
@@ -42,9 +43,7 @@ class App extends Component {
 
   deleteToDo = toDoId => {
     this.setState(prevState => ({
-      todo: prevState.todo.filter(
-        toDoItem => toDoItem.id !== toDoId
-      ),
+      todo: prevState.todo.filter(toDoItem => toDoItem.id !== toDoId),
     }));
   };
 
@@ -124,23 +123,20 @@ class App extends Component {
     });
   };
   render() {
-    const normalizeFilterValue =
-      this.state.firterValue.toLowerCase();
+    const normalizeFilterValue = this.state.firterValue.toLowerCase();
     const filteredTodo = this.state.todo.filter(item =>
       item.name.toLowerCase().includes(normalizeFilterValue)
     );
 
     return (
       <Layout>
-        <ToastContainer
-          autoClose={2000}
-          hideProgressBar={true}
-        />
+        <ToastContainer autoClose={2000} hideProgressBar={true} />
         <PokemonForm onSubmit={this.getNameFromInput} />
-        <Dropdown
+        <PokemonInfo pokemonName={this.state.pokemonName} />
+        {/* <Dropdown
           toggleModal={this.toggleModal}
           addImgUrl={this.addImgUrl}
-        />
+        /> */}
         <Form FormSubmit={this.formSubmitHandler} />
         {this.state.modalActive && (
           <Modal
@@ -157,9 +153,7 @@ class App extends Component {
           deleteToDo={this.deleteToDo}
           ToggleComplete={this.ToggleComplete}
         />
-
         <ColorPicker options={options} />
-
         <Global styles={emotionReset} />
         {/* <PaintingList items={data} /> */}
         {/* <RecipesList items={recipes} /> */}
