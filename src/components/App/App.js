@@ -39,6 +39,7 @@ class App extends Component {
     firterValue: '',
     irterValue: '',
     pokemonName: '',
+
   };
 
   deleteToDo = toDoId => {
@@ -133,10 +134,10 @@ class App extends Component {
         <ToastContainer autoClose={2000} hideProgressBar={true} />
         <PokemonForm onSubmit={this.getNameFromInput} />
         <PokemonInfo pokemonName={this.state.pokemonName} />
-        {/* <Dropdown
+        <Dropdown
           toggleModal={this.toggleModal}
           addImgUrl={this.addImgUrl}
-        /> */}
+        />
         <Form FormSubmit={this.formSubmitHandler} />
         {this.state.modalActive && (
           <Modal
