@@ -1,5 +1,7 @@
 import uniqid from 'uniqid';
+
 import { Formik, Field } from 'formik';
+
 import defaultImg from './img.jpg';
 import PhoneInputField from '../Form/FormInput';
 // import { Styled} from './StyledRecipeForm';
@@ -9,7 +11,8 @@ import {
   StyledButton,
   StyledForm,
   StyledErrorMessage,
-} from './StyledRecipeForm';
+} from '../Recipes/StyledRecipeForm';
+import { GrAdd } from 'react-icons/gr';
 export default function RecipeForm(props) {
   const { addNewRecipe } = props;
   const defaultValues = values => {
@@ -18,8 +21,7 @@ export default function RecipeForm(props) {
     }
     return values.image;
   };
-  const defaultName = values =>
-    values.name === '' ? ' No name' : values.name;
+  const defaultName = values => (values.name === '' ? ' No name' : values.name);
   const RecipeValidationSchema = Yup.object().shape({
     name: Yup.string()
       // .required('Required')
@@ -34,8 +36,7 @@ export default function RecipeForm(props) {
     servings: Yup.number().required().positive(),
     calories: Yup.number().required().positive(),
     image: Yup.string(),
-    difficulty:
-      Yup.array().oneOf[('easy', 'medium', 'hard')],
+    difficulty: Yup.array().oneOf[('easy', 'medium', 'hard')],
   });
   return (
     <Formik
@@ -75,26 +76,17 @@ export default function RecipeForm(props) {
         <StyledLable>
           Servings
           <Field name="servings" />
-          <StyledErrorMessage
-            name="servings"
-            component="div"
-          />
+          <StyledErrorMessage name="servings" component="div" />
         </StyledLable>
         <StyledLable>
           Calories
           <Field name="calories" />
-          <StyledErrorMessage
-            name="calories"
-            component="div"
-          />
+          <StyledErrorMessage name="calories" component="div" />
         </StyledLable>
         <StyledLable>
           Image
           <Field name="image" />
-          <StyledErrorMessage
-            name="image"
-            component="div"
-          />
+          <StyledErrorMessage name="image" component="div" />
         </StyledLable>
         <StyledLable>
           Difficulty
@@ -103,15 +95,11 @@ export default function RecipeForm(props) {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </Field>
-          <Field
-            type="tel"
-            name="phone_number"
-            component={PhoneInputField}
-          />
+          <Field type="tel" name="phone_number" component={PhoneInputField} />
         </StyledLable>
 
         <StyledButton type="submit">
-          Add recipe
+          <GrAdd />
         </StyledButton>
       </StyledForm>
     </Formik>

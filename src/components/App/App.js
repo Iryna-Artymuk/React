@@ -19,6 +19,9 @@ import Modal from '../Modal/Modal';
 import Form from '../Form';
 import PokemonForm from '../Fetch Pokemon/Form';
 import { PokemonInfo } from '../Fetch Pokemon/PokemonInfo';
+import NewsForm from '../FetchNews/NewsForm';
+import NewsList from '../FetchNews/NewsList';
+
 class App extends Component {
   state = {
     todo: [
@@ -39,7 +42,7 @@ class App extends Component {
     firterValue: '',
     irterValue: '',
     pokemonName: '',
-
+    newsSearchValue: '',
   };
 
   deleteToDo = toDoId => {
@@ -87,9 +90,7 @@ class App extends Component {
   ToggleComplete = todoID => {
     this.setState(({ todo }) => ({
       todo: todo.map(todoItem =>
-        todoItem.id === todoID
-          ? { ...todoItem, completed: !todoItem.completed }
-          : todoItem
+        todoItem.id === todoID ? { ...todoItem, completed: !todoItem.completed } : todoItem
       ),
     }));
   };
@@ -123,6 +124,12 @@ class App extends Component {
       pokemonName: name,
     });
   };
+
+  // отрисуєм значення інпуту форми і записуєм  в стейт
+  // далі передамо в компонент який робитиме запит на бекенд
+  getValueForNewsFetch = value => {
+    this.setState({ newsSearchValue: value });
+  };
   render() {
     const normalizeFilterValue = this.state.firterValue.toLowerCase();
     const filteredTodo = this.state.todo.filter(item =>
@@ -132,7 +139,16 @@ class App extends Component {
     return (
       <Layout>
         <ToastContainer autoClose={2000} hideProgressBar={true} />
-        <PokemonForm onSubmit={this.getNameFromInput} />
+        <div
+          style={{
+            background: '',
+          }}
+        >
+          <NewsForm getValueForNewsFetch={this.getValueForNewsFetch}></NewsForm>
+          <NewsList newsSearchValue={this.state.newsSearchValue} />
+        </div>
+
+        {/* <PokemonForm onSubmit={this.getNameFromInput} />
         <PokemonInfo pokemonName={this.state.pokemonName} />
         <Dropdown
           toggleModal={this.toggleModal}
@@ -154,7 +170,7 @@ class App extends Component {
           deleteToDo={this.deleteToDo}
           ToggleComplete={this.ToggleComplete}
         />
-        <ColorPicker options={options} />
+        <ColorPicker options={options} /> */}
         <Global styles={emotionReset} />
         {/* <PaintingList items={data} /> */}
         {/* <RecipesList items={recipes} /> */}
